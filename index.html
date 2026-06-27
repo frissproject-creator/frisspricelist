@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRISSPROJECT - Jasa Edit Video Reels, TikTok & YouTube</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        darkbg: '#030712',      /* Slate 950 */
+                        darkcard: '#0b1329',    /* Deep Dark Blue */
+                        darkborder: '#1e293b',  /* Slate 800 */
+                        primary: '#3b82f6',     /* Premium Blue */
+                        accent: '#06b6d4',      /* Electric Cyan */
+                        indigoAccent: '#6366f1' /* Vibrant Indigo */
+                    },
+                    boxShadow: {
+                        'neon-blue': '0 0 20px rgba(59, 130, 246, 0.15)',
+                        'neon-cyan': '0 0 25px rgba(6, 182, 212, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #030712;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030712;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6;
+        }
+        /* Glow effects */
+        .text-glow-cyan {
+            text-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+        }
+        .text-glow-blue {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+        .glow-card:hover {
+            box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.2), 0 1px 1px 0 rgba(6, 182, 212, 0.1);
+            border-color: rgba(6, 182, 212, 0.4);
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+<body class="selection:bg-cyan-500 selection:text-darkbg">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-darkbg/85 backdrop-blur-md border-b border-darkborder transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="h-10 w-10 rounded-xl bg-gradient-to-tr from-primary to-accent flex items-center justify-center shadow-neon-blue">
+                        <i class="fa-solid fa-play text-darkbg text-lg font-bold"></i>
+                    </div>
+                    <span class="font-heading font-extrabold text-xl tracking-wider bg-gradient-to-r from-white via-blue-200 to-accent bg-clip-text text-transparent">FRISSPROJECT</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#home" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Beranda</a>
+                    <a href="#layanan" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Layanan</a>
+                    <a href="#pricelist" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Pricelist</a>
+                    <a href="#portfolio" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Portofolio</a>
+                    <a href="#faq" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">FAQ</a>
+                </div>
+
+                <!-- CTA Button Desktop -->
+                <div class="hidden md:block">
+                    <a href="#kontak" class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium rounded-xl group bg-gradient-to-br from-primary to-accent group-hover:from-primary group-hover:to-accent text-white hover:text-darkbg focus:ring-4 focus:outline-none focus:ring-blue-800 transition-all duration-300">
+                        <span class="relative px-5 py-2 transition-all ease-in duration-75 bg-darkbg rounded-xl group-hover:bg-opacity-0">
+                            Konsultasi Gratis <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        </span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white focus:outline-none p-2 rounded-lg hover:bg-slate-900/50">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-drawer" class="hidden md:hidden bg-darkbg/95 border-b border-darkborder px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-300 hover:bg-slate-900 hover:text-accent transition-all">Beranda</a>
+            <a href="#layanan" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-300 hover:bg-slate-900 hover:text-accent transition-all">Layanan</a>
+            <a href="#pricelist" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-300 hover:bg-slate-900 hover:text-accent transition-all">Pricelist</a>
+            <a href="#portfolio" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-300 hover:bg-slate-900 hover:text-accent transition-all">Portofolio</a>
+            <a href="#faq" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-300 hover:bg-slate-900 hover:text-accent transition-all">FAQ</a>
+            <a href="#kontak" class="block w-full text-center py-3 px-4 rounded-xl bg-gradient-to-r from-primary to-accent text-darkbg font-bold shadow-neon-blue transition-all">Mulai Proyek</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-24 md:pt-44 md:pb-36 overflow-hidden">
+        <!-- Background Ornaments / Glow Rings -->
+        <div class="absolute top-1/4 left-1/10 w-96 h-96 bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+        <div class="absolute top-1/3 right-1/10 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[150px] pointer-events-none"></div>
+        <div class="absolute inset-0 bg-[linear-gradient(to_right,#080e1a_1px,transparent_1px),linear-gradient(to_bottom,#080e1a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-60"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <!-- Promo Badge -->
+                <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold bg-blue-950/60 border border-blue-800/50 text-accent mb-6 animate-pulse">
+                    <span class="w-2 h-2 rounded-full bg-accent"></span>
+                    Jasa Editing Video Konten Premium
+                </span>
+
+                <!-- Main Heading -->
+                <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-7xl leading-tight tracking-tight mb-6">
+                    Ubah Video Biasa Jadi <br>
+                    <span class="bg-gradient-to-r from-accent via-primary to-indigoAccent bg-clip-text text-transparent">Konten Viral Berkelas</span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="text-slate-400 text-lg sm:text-xl font-normal max-w-2xl mx-auto mb-10 leading-relaxed">
+                    Sajikan visual memikat untuk TikTok, Instagram Reels, dan YouTube. Edit profesional dengan transisi dinamis, sound design, dan motion graphics yang meningkatkan engagement.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="#pricelist" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-primary to-accent hover:from-blue-600 hover:to-cyan-500 text-darkbg font-bold rounded-xl shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-tags"></i> Lihat Daftar Harga
+                    </a>
+                    <a href="#kontak" class="w-full sm:w-auto px-8 py-4 bg-darkcard hover:bg-slate-900 border border-darkborder hover:border-accent text-slate-300 hover:text-white font-medium rounded-xl transition-all duration-300 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane text-accent"></i> Hubungi Kami
+                    </a>
+                </div>
+
+                <!-- Trusted / Stats Banner -->
+                <div class="mt-16 pt-12 border-t border-darkborder/50 max-w-3xl mx-auto grid grid-cols-3 gap-4 text-center">
+                    <div>
+                        <div class="text-3xl sm:text-4xl font-extrabold text-white font-heading">200k+</div>
+                        <div class="text-xs sm:text-sm text-slate-500 mt-1">Total Views Generated</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl sm:text-4xl font-extrabold text-accent font-heading">500+</div>
+                        <div class="text-xs sm:text-sm text-slate-500 mt-1">Video Selesai Di-edit</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl sm:text-4xl font-extrabold text-white font-heading">99%</div>
+                        <div class="text-xs sm:text-sm text-slate-500 mt-1">Klien Puas & Repeat Order</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="layanan" class="py-20 border-t border-darkborder bg-gradient-to-b from-darkbg to-[#070d1e]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">Spesialisasi Format Video Kami</h2>
+                <p class="text-slate-400 mt-4">Kami meracik video Anda agar sesuai dengan standar algoritma dan estetika unik dari setiap platform.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1: Short-form (Reels/TikTok) -->
+                <div class="bg-darkcard border border-darkborder p-8 rounded-2xl relative overflow-hidden group hover:border-accent/40 transition-all duration-300">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-accent/5 rounded-bl-full pointer-events-none transition-all duration-300 group-hover:bg-accent/10"></div>
+                    <div class="h-14 w-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 border border-accent/20">
+                        <i class="fa-brands fa-tiktok text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-heading mb-3 group-hover:text-accent transition-colors">TikTok & IG Reels</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Video vertikal (9:16) berkecepatan tinggi, transisi memikat, auto-captions dinamis bergaya Alex Hormozi, sound effect ekspresif untuk retensi maksimal audiens.</p>
+                    <ul class="space-y-3 text-xs text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent"></i> Aspek Rasio Vertikal (9:16)</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent"></i> Trend Audio Syncing</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-accent"></i> Pop-up Captions Keren</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2: YouTube Horizontal -->
+                <div class="bg-darkcard border border-darkborder p-8 rounded-2xl relative overflow-hidden group hover:border-primary/40 transition-all duration-300">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full pointer-events-none transition-all duration-300 group-hover:bg-primary/10"></div>
+                    <div class="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 border border-primary/20">
+                        <i class="fa-brands fa-youtube text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-heading mb-3 group-hover:text-primary transition-colors">YouTube Video</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Video horizontal standar (16:9) yang sinematik. Alur cerita rapi (storytelling), grading warna professional, penataan B-roll presisi, dan audio mixing jernih.</p>
+                    <ul class="space-y-3 text-xs text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-primary"></i> Aspek Rasio Horizontal (16:9)</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-primary"></i> Color Grading Sinematik</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-primary"></i> Sound Design & BGM Bebas Hak Cipta</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3: Custom & Branding -->
+                <div class="bg-darkcard border border-darkborder p-8 rounded-2xl relative overflow-hidden group hover:border-indigoAccent/40 transition-all duration-300">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-indigoAccent/5 rounded-bl-full pointer-events-none transition-all duration-300 group-hover:bg-indigoAccent/10"></div>
+                    <div class="h-14 w-14 rounded-2xl bg-indigoAccent/10 flex items-center justify-center mb-6 border border-indigoAccent/20">
+                        <i class="fa-solid fa-wand-magic-sparkles text-indigoAccent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-heading mb-3 group-hover:text-indigoAccent transition-colors">Video Bisnis / Iklan</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Penyuntingan berorientasi penjualan. Cocok untuk iklan berbayar (FB Ads/Tiktok Ads), profil bisnis, presentasi produk, dan konten promosi berkualitas tinggi.</p>
+                    <ul class="space-y-3 text-xs text-slate-300">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigoAccent"></i> Hook Kuat di 3 Detik Pertama</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigoAccent"></i> Motion Graphics & Call to Action</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigoAccent"></i> Efek Khusus Branding Brand</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricelist Section -->
+    <section id="pricelist" class="py-20 bg-darkbg border-t border-darkborder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">Pilih Paket Sesuai Kebutuhanmu</h2>
+                <p class="text-slate-400 mt-4">Harga transparan tanpa biaya tambahan tersembunyi. Sangat cocok untuk kreator solo, brand, maupun agensi.</p>
+            </div>
+
+            <!-- Pricing Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                <!-- Package 1: Starter Short-Form -->
+                <div class="bg-darkcard border border-darkborder rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 hover:border-slate-700 relative overflow-hidden">
+                    <div>
+                        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-800 text-slate-300">Starter Short-Form</span>
+                        <h3 class="text-2xl font-bold font-heading text-white mt-4">Paket TikTok / Reels Lite</h3>
+                        <p class="text-slate-400 text-sm mt-2">Sangat pas untuk pemula yang ingin mulai membangun brand digital secara konsisten.</p>
+                        
+                        <!-- Price -->
+                        <div class="my-8">
+                            <span class="text-slate-400 text-sm">Mulai dari</span>
+                            <div class="flex items-baseline gap-1 mt-1">
+                                <span class="text-3xl font-extrabold text-white font-heading">Rp 150.000</span>
+                                <span class="text-slate-500 text-sm">/ video</span>
+                            </div>
+                        </div>
+
+                        <!-- Divider -->
+                        <hr class="border-darkborder my-6">
+
+                        <!-- Features -->
+                        <ul class="space-y-4 text-sm text-slate-300">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-accent mt-1 text-sm"></i>
+                                <span>Durasi output maks. 60 detik</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-accent mt-1 text-sm"></i>
+                                <span>Pemotongan klip & penyesuaian pace</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-accent mt-1 text-sm"></i>
+                                <span>Efek teks/subtitel dasar</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-accent mt-1 text-sm"></i>
+                                <span>Penyelarasan audio tren</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-accent mt-1 text-sm"></i>
+                                <span>Revisi maksimal 1x</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-8">
+                        <button onclick="selectPackage('TikTok/Reels Lite (Rp 150.000/video)')" class="w-full py-3 px-4 bg-slate-900 hover:bg-slate-800 text-slate-100 font-semibold rounded-xl border border-darkborder hover:border-slate-600 transition-all duration-300">
+                            Pilih Paket Lite
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Package 2: Creator Short-Form Pro (Recommended) -->
+                <div class="bg-gradient-to-b from-[#0e1f3a] to-[#091224] border-2 border-primary rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 hover:shadow-neon-blue relative">
+                    <!-- Recommended Badge -->
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-primary to-accent text-darkbg font-extrabold text-xs px-4 py-1.5 rounded-full tracking-wide uppercase">
+                        Terpopuler ★
+                    </div>
+
+                    <div>
+                        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-900/40 text-accent">Creator Premium</span>
+                        <h3 class="text-2xl font-bold font-heading text-white mt-4">TikTok / Reels Pro</h3>
+                        <p class="text-slate-300 text-sm mt-2">Dapatkan video dengan visual memukau, sound effect ekspresif, dan teks dinamis pemicu engagement.</p>
+                        
+                        <!-- Price -->
+                        <div class="my-8">
+                            <span class="text-slate-300 text-sm">Mulai dari</span>
+                            <div class="flex items-baseline gap-1 mt-1">
+                                <span class="text-4xl font-extrabold text-white font-heading">Rp 250.000</span>
+                                <span class="text-slate-300 text-sm">/ video</span>
+                            </div>
+                        </div>
+
+                        <!-- Divider -->
+                        <hr class="border-blue-900/50 my-6">
+
+                        <!-- Features -->
+                        <ul class="space-y-4 text-sm text-slate-100">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-accent mt-1 text-sm"></i>
+                                <span>Durasi output maks. 90 detik</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-accent mt-1 text-sm"></i>
+                                <span>Koreksi warna (Color Grading) modern</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-accent mt-1 text-sm"></i>
+                                <span>Pop-up Subtitel Animatif & Emoji Popups</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-accent mt-1 text-sm"></i>
+                                <span>Sound Design (SFX) yang pas</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-accent mt-1 text-sm"></i>
+                                <span>Free Zooming Effect & Pattern Interrupts</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-accent mt-1 text-sm"></i>
+                                <span>Revisi maksimal 3x</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-8">
+                        <button onclick="selectPackage('TikTok/Reels Pro (Rp 250.000/video)')" class="w-full py-3.5 px-4 bg-gradient-to-r from-primary to-accent hover:from-blue-600 hover:to-cyan-500 text-darkbg font-extrabold rounded-xl shadow-lg transition-all duration-300">
+                            Pilih Paket Pro
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Package 3: YouTube Sinematik -->
+                <div class="bg-darkcard border border-darkborder rounded-3xl p-8 flex flex-col justify-between transition-all duration-300 hover:border-slate-700 relative overflow-hidden">
+                    <div>
+                        <span class="text-xs font-semibold px-3 py-1 rounded-full bg-slate-800 text-slate-300">Long-Form</span>
+                        <h3 class="text-2xl font-bold font-heading text-white mt-4">YouTube Premium</h3>
+                        <p class="text-slate-400 text-sm mt-2">Sangat ideal untuk vlogger, video edukasi, review gadget, podcast, dan video dokumenter.</p>
+                        
+                        <!-- Price -->
+                        <div class="my-8">
+                            <span class="text-slate-400 text-sm">Mulai dari</span>
+                            <div class="flex items-baseline gap-1 mt-1">
+                                <span class="text-3xl font-extrabold text-white font-heading">Rp 650.000</span>
+                                <span class="text-slate-500 text-sm">/ video</span>
+                            </div>
+                        </div>
+
+                        <!-- Divider -->
+                        <hr class="border-darkborder my-6">
+
+                        <!-- Features -->
+                        <ul class="space-y-4 text-sm text-slate-300">
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-accent mt-1 text-sm"></i>
+                                <span>Durasi output hingga 10 menit</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-accent mt-1 text-sm"></i>
+                                <span>Penyusunan alur cerita / Storytelling yang rapi</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-accent mt-1 text-sm"></i>
+                                <span>Color Grading & Sound Mixing Pro</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-accent mt-1 text-sm"></i>
+                                <span>Penyisipan B-Roll & Stok Footage Berlisensi</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-accent mt-1 text-sm"></i>
+                                <span>Lower thirds, bumper intro & outro simpel</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fa-solid fa-circle-check text-accent mt-1 text-sm"></i>
+                                <span>Revisi maksimal 2x</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-8">
+                        <button onclick="selectPackage('YouTube Premium (Rp 650.000/video)')" class="w-full py-3 px-4 bg-slate-900 hover:bg-slate-800 text-slate-100 font-semibold rounded-xl border border-darkborder hover:border-slate-600 transition-all duration-300">
+                            Pilih Paket YouTube
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Retainer Package Banner -->
+            <div class="mt-16 bg-gradient-to-r from-blue-950/40 via-slate-950 to-cyan-950/40 border border-darkborder rounded-2xl p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="max-w-xl">
+                    <h4 class="text-xl font-bold font-heading text-white">Butuh Langganan Bulanan (Retainer)?</h4>
+                    <p class="text-slate-400 text-sm mt-2">Dapatkan harga diskon hingga 25% dengan menyewa editor kami secara bulanan dengan kuota video tertentu. Sangat cocok untuk konsistensi upload harian!</p>
+                </div>
+                <a href="#kontak" class="w-full md:w-auto px-6 py-3 bg-darkcard hover:bg-slate-900 border border-accent/40 hover:border-accent text-accent hover:text-white text-sm font-semibold rounded-xl transition-all duration-300 text-center">
+                    Hubungi untuk Kerja Sama Bulanan
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20 bg-darkbg border-t border-darkborder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">Portofolio & Hasil Kerja Kami</h2>
+                <p class="text-slate-400 mt-4">Kualitas visual berbicara lebih keras. Berikut beberapa karya terbaru yang kami kerjakan untuk para kreator papan atas.</p>
+                
+                <!-- Filter Tabs -->
+                <div class="flex justify-center gap-3 mt-8 flex-wrap">
+                    <button onclick="filterPortfolio('all')" class="portfolio-tab px-4 py-2 rounded-full text-xs font-semibold bg-blue-900/40 text-accent border border-blue-800/50 transition-all duration-300">Semua Video</button>
+                    <button onclick="filterPortfolio('short')" class="portfolio-tab px-4 py-2 rounded-full text-xs font-semibold bg-darkcard text-slate-400 border border-darkborder hover:border-slate-700 transition-all duration-300">TikTok / Reels</button>
+                    <button onclick="filterPortfolio('long')" class="portfolio-tab px-4 py-2 rounded-full text-xs font-semibold bg-darkcard text-slate-400 border border-darkborder hover:border-slate-700 transition-all duration-300">YouTube</button>
+                    <button onclick="filterPortfolio('promo')" class="portfolio-tab px-4 py-2 rounded-full text-xs font-semibold bg-darkcard text-slate-400 border border-darkborder hover:border-slate-700 transition-all duration-300">Iklan / Bisnis</button>
+                </div>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div id="portfolio-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1 (Short) -->
+                <div class="portfolio-item bg-darkcard border border-darkborder rounded-2xl overflow-hidden group hover:border-accent/40 transition-all duration-300" data-category="short">
+                    <div class="relative aspect-[9/16] max-h-[400px] bg-slate-900 flex items-center justify-center overflow-hidden">
+                        <!-- Simulated video thumbnail gradient -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkbg via-transparent to-transparent z-10"></div>
+                        <img src="https://placehold.co/400x700/0b1329/06b6d4?text=Reels+TikTok+Vibe" alt="Preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/400x700/030712/3b82f6?text=Preview+Reels'">
+                        <div class="absolute inset-0 flex items-center justify-center z-20">
+                            <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Edu-TikTok: Cara Jitu Bangun Personal Branding')" class="h-14 w-14 rounded-full bg-accent/90 hover:bg-accent text-darkbg flex items-center justify-center shadow-lg transform hover:scale-110 active:scale-95 transition-all">
+                                <i class="fa-solid fa-play text-lg ml-0.5"></i>
+                            </button>
+                        </div>
+                        <span class="absolute top-4 left-4 z-20 bg-darkbg/80 backdrop-blur-md border border-accent/20 text-accent text-[10px] font-bold px-2.5 py-1 rounded-full">Reels & TikTok</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-white group-hover:text-accent transition-colors text-base">Personal Branding - Tips Keuangan Kreatif</h3>
+                        <p class="text-slate-500 text-xs mt-1">Est. Engagement: +185% views growth</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 (Long) -->
+                <div class="portfolio-item bg-darkcard border border-darkborder rounded-2xl overflow-hidden group hover:border-primary/40 transition-all duration-300" data-category="long">
+                    <div class="relative aspect-video bg-slate-900 flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkbg via-transparent to-transparent z-10"></div>
+                        <img src="https://placehold.co/700x400/0b1329/3b82f6?text=YouTube+Sinematik+Vlog" alt="Preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/700x400/030712/3b82f6?text=Preview+YouTube'">
+                        <div class="absolute inset-0 flex items-center justify-center z-20">
+                            <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Vlog Saku: Eksplorasi Kota Tua Jakarta')" class="h-14 w-14 rounded-full bg-primary/90 hover:bg-primary text-white flex items-center justify-center shadow-lg transform hover:scale-110 active:scale-95 transition-all">
+                                <i class="fa-solid fa-play text-lg ml-0.5"></i>
+                            </button>
+                        </div>
+                        <span class="absolute top-4 left-4 z-20 bg-darkbg/80 backdrop-blur-md border border-primary/20 text-primary text-[10px] font-bold px-2.5 py-1 rounded-full">YouTube Video</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-white group-hover:text-primary transition-colors text-base">Travel Vlog Sinematik - Eksplorasi Sudut Kota</h3>
+                        <p class="text-slate-500 text-xs mt-1">Gaya Editing: Cinematic, Color-Graded, Storytelling</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 (Promo) -->
+                <div class="portfolio-item bg-darkcard border border-darkborder rounded-2xl overflow-hidden group hover:border-indigoAccent/40 transition-all duration-300" data-category="promo">
+                    <div class="relative aspect-video bg-slate-900 flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkbg via-transparent to-transparent z-10"></div>
+                        <img src="https://placehold.co/700x400/0b1329/6366f1?text=Video+Promosi+Produk" alt="Preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/700x400/030712/3b82f6?text=Preview+Iklan'">
+                        <div class="absolute inset-0 flex items-center justify-center z-20">
+                            <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Video Promosi Kopi Susu Lokal')" class="h-14 w-14 rounded-full bg-indigoAccent/90 hover:bg-indigoAccent text-white flex items-center justify-center shadow-lg transform hover:scale-110 active:scale-95 transition-all">
+                                <i class="fa-solid fa-play text-lg ml-0.5"></i>
+                            </button>
+                        </div>
+                        <span class="absolute top-4 left-4 z-20 bg-darkbg/80 backdrop-blur-md border border-indigoAccent/20 text-indigoAccent text-[10px] font-bold px-2.5 py-1 rounded-full">Iklan Bisnis</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-white group-hover:text-indigoAccent transition-colors text-base">Commercial Ads - Produk Kopi Premium</h3>
+                        <p class="text-slate-500 text-xs mt-1">Gaya Editing: Energetic, Sound Design Padat, High Conversion</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 4 (Short) -->
+                <div class="portfolio-item bg-darkcard border border-darkborder rounded-2xl overflow-hidden group hover:border-accent/40 transition-all duration-300" data-category="short">
+                    <div class="relative aspect-[9/16] max-h-[400px] bg-slate-900 flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkbg via-transparent to-transparent z-10"></div>
+                        <img src="https://placehold.co/400x700/0b1329/06b6d4?text=Review+Gadget+Shorts" alt="Preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/400x700/030712/3b82f6?text=Preview+Shorts'">
+                        <div class="absolute inset-0 flex items-center justify-center z-20">
+                            <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Review Gadget Kekinian')" class="h-14 w-14 rounded-full bg-accent/90 hover:bg-accent text-darkbg flex items-center justify-center shadow-lg transform hover:scale-110 active:scale-95 transition-all">
+                                <i class="fa-solid fa-play text-lg ml-0.5"></i>
+                            </button>
+                        </div>
+                        <span class="absolute top-4 left-4 z-20 bg-darkbg/80 backdrop-blur-md border border-accent/20 text-accent text-[10px] font-bold px-2.5 py-1 rounded-full">Reels & TikTok</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-white group-hover:text-accent transition-colors text-base">Unboxing & Mini Review Gadget</h3>
+                        <p class="text-slate-500 text-xs mt-1">Gaya Editing: Fast-paced, SFX Punchy, Pop-up Specs</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 5 (Long) -->
+                <div class="portfolio-item bg-darkcard border border-darkborder rounded-2xl overflow-hidden group hover:border-primary/40 transition-all duration-300" data-category="long">
+                    <div class="relative aspect-video bg-slate-900 flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkbg via-transparent to-transparent z-10"></div>
+                        <img src="https://placehold.co/700x400/0b1329/3b82f6?text=Podcast+Video+Premium" alt="Preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/700x400/030712/3b82f6?text=Preview+Podcast'">
+                        <div class="absolute inset-0 flex items-center justify-center z-20">
+                            <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Podcast Kreatif')" class="h-14 w-14 rounded-full bg-primary/90 hover:bg-primary text-white flex items-center justify-center shadow-lg transform hover:scale-110 active:scale-95 transition-all">
+                                <i class="fa-solid fa-play text-lg ml-0.5"></i>
+                            </button>
+                        </div>
+                        <span class="absolute top-4 left-4 z-20 bg-darkbg/80 backdrop-blur-md border border-primary/20 text-primary text-[10px] font-bold px-2.5 py-1 rounded-full">YouTube Video</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-white group-hover:text-primary transition-colors text-base">Multi-Camera Podcast Talkshow</h3>
+                        <p class="text-slate-500 text-xs mt-1">Gaya Editing: Seamless Camera Switching, Noise Reduction</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 6 (Promo) -->
+                <div class="portfolio-item bg-darkcard border border-darkborder rounded-2xl overflow-hidden group hover:border-indigoAccent/40 transition-all duration-300" data-category="promo">
+                    <div class="relative aspect-video bg-slate-900 flex items-center justify-center overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkbg via-transparent to-transparent z-10"></div>
+                        <img src="https://placehold.co/700x400/0b1329/6366f1?text=Iklan+Aplikasi+Modern" alt="Preview" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://placehold.co/700x400/030712/3b82f6?text=Preview+SaaS'">
+                        <div class="absolute inset-0 flex items-center justify-center z-20">
+                            <button onclick="openVideoModal('https://www.youtube.com/embed/dQw4w9WgXcQ', 'Promo Aplikasi FinTech')" class="h-14 w-14 rounded-full bg-indigoAccent/90 hover:bg-indigoAccent text-white flex items-center justify-center shadow-lg transform hover:scale-110 active:scale-95 transition-all">
+                                <i class="fa-solid fa-play text-lg ml-0.5"></i>
+                            </button>
+                        </div>
+                        <span class="absolute top-4 left-4 z-20 bg-darkbg/80 backdrop-blur-md border border-indigoAccent/20 text-indigoAccent text-[10px] font-bold px-2.5 py-1 rounded-full">Iklan Bisnis</span>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-bold text-white group-hover:text-indigoAccent transition-colors text-base">SaaS / App Explainer - Infografis Animasi</h3>
+                        <p class="text-slate-500 text-xs mt-1">Gaya Editing: Premium UI Showcase, Motion Tracking</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-slate-950/40 border-t border-darkborder">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-white">Ada Pertanyaan?</h2>
+                <p class="text-slate-400 mt-4">Kami merangkum pertanyaan yang paling sering diajukan untuk mempermudah alur kerja Anda.</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="bg-darkcard border border-darkborder rounded-2xl overflow-hidden transition-all duration-300">
+                    <button class="faq-toggle w-full px-6 py-5 flex justify-between items-center text-left text-white hover:text-accent font-semibold focus:outline-none">
+                        <span>Bagaimana cara mengirim file video mentah (footage) ke editor?</span>
+                        <i class="fa-solid fa-chevron-down transition-transform duration-300 text-sm"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 text-sm text-slate-400 leading-relaxed border-t border-darkborder/50 pt-4">
+                        Anda bisa mengunggah file video mentah Anda ke cloud storage seperti Google Drive, Dropbox, atau Wetransfer, lalu kirimkan tautan/link-nya kepada kami. Pastikan akses link diatur agar dapat diakses oleh siapa saja dengan link tersebut.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-darkcard border border-darkborder rounded-2xl overflow-hidden transition-all duration-300">
+                    <button class="faq-toggle w-full px-6 py-5 flex justify-between items-center text-left text-white hover:text-accent font-semibold focus:outline-none">
+                        <span>Berapa lama estimasi pengerjaan satu video?</span>
+                        <i class="fa-solid fa-chevron-down transition-transform duration-300 text-sm"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 text-sm text-slate-400 leading-relaxed border-t border-darkborder/50 pt-4">
+                        Pengerjaan untuk video pendek (TikTok/Reels) berkisar antara 1 - 2 hari kerja. Untuk video panjang (YouTube), membutuhkan waktu sekitar 2 - 4 hari kerja tergantung dari tingkat kerumitan skrip dan ketersediaan footage.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-darkcard border border-darkborder rounded-2xl overflow-hidden transition-all duration-300">
+                    <button class="faq-toggle w-full px-6 py-5 flex justify-between items-center text-left text-white hover:text-accent font-semibold focus:outline-none">
+                        <span>Bagaimana jika hasil editing video tidak sesuai dengan ekspektasi?</span>
+                        <i class="fa-solid fa-chevron-down transition-transform duration-300 text-sm"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 text-sm text-slate-400 leading-relaxed border-t border-darkborder/50 pt-4">
+                        Setiap paket sudah dilengkapi dengan kuota revisi gratis (sesuai paket yang Anda pilih). Anda cukup memberikan timestamp (detik ke-berapa) dan instruksi perubahan apa yang diinginkan. Kami siap menyelaraskan visual hingga Anda puas.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="bg-darkcard border border-darkborder rounded-2xl overflow-hidden transition-all duration-300">
+                    <button class="faq-toggle w-full px-6 py-5 flex justify-between items-center text-left text-white hover:text-accent font-semibold focus:outline-none">
+                        <span>Apakah musik latar (BGM) aman dari tuntutan hak cipta?</span>
+                        <i class="fa-solid fa-chevron-down transition-transform duration-300 text-sm"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 text-sm text-slate-400 leading-relaxed border-t border-darkborder/50 pt-4">
+                        Tentu saja. Kami hanya menggunakan musik bebas hak cipta (royalty-free) dari platform langganan premium kami atau audio yang berlisensi gratis untuk penggunaan komersial, sehingga video Anda aman dipublikasikan di platform manapun.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking & Contact Section -->
+    <section id="kontak" class="py-20 bg-darkbg border-t border-darkborder relative">
+        <div class="absolute bottom-0 left-0 right-0 h-96 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left Details -->
+                <div>
+                    <span class="text-accent text-sm font-semibold tracking-wider uppercase">Siap Mulai Berkolaborasi?</span>
+                    <h2 class="font-heading font-extrabold text-4xl text-white mt-2 leading-tight">Hubungi Kami & Jadikan Videomu Viral</h2>
+                    <p class="text-slate-400 mt-4 leading-relaxed">Punya konsep khusus atau ingin mendiskusikan harga proyek besar? Isi formulir di samping, atau langsung klik tombol WhatsApp di bawah untuk mengobrol santai secara instan.</p>
+                    
+                    <!-- Direct Contacts -->
+                    <div class="mt-8 space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-blue-950/50 border border-blue-800/30 flex items-center justify-center text-accent">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-slate-500 text-xs uppercase tracking-wide">Email Resmi</h4>
+                                <p class="text-white text-sm font-semibold">halo@frissproject.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-950/50 border border-emerald-800/30 flex items-center justify-center text-emerald-400">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-slate-500 text-xs uppercase tracking-wide">WhatsApp Fast Response</h4>
+                                <p class="text-white text-sm font-semibold">+62 812-3456-7890</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Direct Chat Button -->
+                    <div class="mt-8">
+                        <a href="https://wa.me/6281234567890?text=Halo%20FrissProject,%20saya%20tertarik%20dengan%20jasa%20editing%20video%20konten" target="_blank" class="inline-flex items-center gap-2 px-6 py-3.5 bg-emerald-500 hover:bg-emerald-600 text-darkbg font-bold rounded-xl shadow-lg transition-all hover:scale-[1.02]">
+                            <i class="fa-brands fa-whatsapp text-lg"></i> Hubungi via WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Form Box -->
+                <div class="bg-darkcard border border-darkborder p-6 sm:p-10 rounded-3xl relative">
+                    <h3 class="font-heading font-bold text-xl text-white mb-6">Formulir Request Edit Video</h3>
+                    
+                    <form id="booking-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                        <!-- Name Input -->
+                        <div>
+                            <label for="form-name" class="block text-xs text-slate-400 font-semibold mb-2">Nama Lengkap / Brand</label>
+                            <input type="text" id="form-name" required placeholder="Contoh: Budi - Gadget Tech" class="w-full bg-darkbg border border-darkborder focus:border-accent rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none transition-colors">
+                        </div>
+
+                        <!-- Platform Target -->
+                        <div>
+                            <label class="block text-xs text-slate-400 font-semibold mb-2">Pilih Jenis Layanan / Paket</label>
+                            <select id="form-package" class="w-full bg-darkbg border border-darkborder focus:border-accent rounded-xl px-4 py-3 text-sm text-white focus:outline-none transition-colors">
+                                <option value="TikTok/Reels Pro (Rp 250.000/video)">TikTok / Reels Pro (Rp 250.000 / video)</option>
+                                <option value="TikTok/Reels Lite (Rp 150.000/video)">TikTok / Reels Lite (Rp 150.000 / video)</option>
+                                <option value="YouTube Premium (Rp 650.000/video)">YouTube Premium (Rp 650.000 / video)</option>
+                                <option value="Kustom / Custom Package">Custom Package (Kerjasama Retainer)</option>
+                            </select>
+                        </div>
+
+                        <!-- Brief / Notes -->
+                        <div>
+                            <label for="form-brief" class="block text-xs text-slate-400 font-semibold mb-2">Ceritakan Konsep Videomu (Brief Singkat)</label>
+                            <textarea id="form-brief" rows="3" placeholder="Tuliskan referensi editing, gaya tulisan, atau detail lagu yang diinginkan..." class="w-full bg-darkbg border border-darkborder focus:border-accent rounded-xl px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none transition-colors"></textarea>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="w-full py-4 bg-gradient-to-r from-primary to-accent text-darkbg font-extrabold rounded-xl shadow-lg shadow-cyan-500/10 hover:shadow-cyan-500/30 transition-all hover:scale-[1.01]">
+                            Kirim Permintaan Sekarang <i class="fa-solid fa-paper-plane ml-2 text-xs"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-darkbg border-t border-darkborder py-12 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-darkborder/50">
+                <!-- Footer Brand -->
+                <div class="flex items-center gap-3">
+                    <div class="h-8 w-8 rounded-lg bg-gradient-to-tr from-primary to-accent flex items-center justify-center">
+                        <i class="fa-solid fa-play text-darkbg text-sm font-bold"></i>
+                    </div>
+                    <span class="font-heading font-extrabold text-lg tracking-wider bg-gradient-to-r from-white to-accent bg-clip-text text-transparent">FRISSPROJECT</span>
+                </div>
+
+                <!-- Footer Links -->
+                <div class="flex flex-wrap justify-center gap-6 text-sm text-slate-500">
+                    <a href="#home" class="hover:text-white transition-colors">Home</a>
+                    <a href="#layanan" class="hover:text-white transition-colors">Layanan</a>
+                    <a href="#pricelist" class="hover:text-white transition-colors">Pricelist</a>
+                    <a href="#portfolio" class="hover:text-white transition-colors">Portofolio</a>
+                </div>
+
+                <!-- Footer Socials -->
+                <div class="flex gap-4">
+                    <a href="#" class="h-9 w-9 rounded-lg bg-slate-900 border border-darkborder flex items-center justify-center text-slate-400 hover:text-accent hover:border-accent transition-all"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="h-9 w-9 rounded-lg bg-slate-900 border border-darkborder flex items-center justify-center text-slate-400 hover:text-accent hover:border-accent transition-all"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="h-9 w-9 rounded-lg bg-slate-900 border border-darkborder flex items-center justify-center text-slate-400 hover:text-accent hover:border-accent transition-all"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <!-- Copyright info -->
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 text-xs text-slate-600">
+                <p>&copy; 2026 FRISSPROJECT Creative Studio. Hak Cipta Dilindungi.</p>
+                <p>Website Design & Crafted with Blue Vibes <i class="fa-solid fa-heart text-blue-500"></i></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Player Modal Overlay -->
+    <div id="video-modal" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="relative w-full max-w-4xl bg-darkcard border border-darkborder rounded-2xl overflow-hidden shadow-2xl">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center p-4 border-b border-darkborder">
+                <h3 id="modal-video-title" class="text-white font-bold font-heading text-sm sm:text-base">Video Preview</h3>
+                <button onclick="closeVideoModal()" class="h-8 w-8 rounded-lg bg-slate-900 hover:bg-slate-800 border border-darkborder flex items-center justify-center text-slate-300 hover:text-red-400 transition-colors">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <!-- Video Container (Responsive Aspect Ratio) -->
+            <div class="relative w-full aspect-video">
+                <iframe id="modal-iframe" class="absolute inset-0 w-full h-full" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast Box -->
+    <div id="toast-notif" class="hidden fixed bottom-6 right-6 z-50 bg-darkcard border border-emerald-500/40 text-slate-100 px-6 py-4 rounded-2xl shadow-neon-blue flex items-center gap-3 max-w-md animate-bounce">
+        <div class="h-8 w-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div>
+            <h4 class="font-bold text-sm text-white">Sukses!</h4>
+            <p id="toast-message" class="text-xs text-slate-400 mt-0.5">Permintaan Anda berhasil dikirim ke tim kami.</p>
+        </div>
+    </div>
+
+
+    <script>
+        // DOM Elements
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+
+        // Toggle Mobile Menu
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileDrawer.classList.toggle('hidden');
+        });
+
+        // FAQ accordion toggle logic
+        document.querySelectorAll('.faq-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // Portfolio Filtering Logic
+        function filterPortfolio(category) {
+            // Update Tab Active State
+            const tabs = document.querySelectorAll('.portfolio-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('bg-blue-900/40', 'text-accent', 'border-blue-800/50');
+                tab.classList.add('bg-darkcard', 'text-slate-400', 'border-darkborder');
+            });
+
+            // Set active state on target
+            event.target.classList.remove('bg-darkcard', 'text-slate-400', 'border-darkborder');
+            event.target.classList.add('bg-blue-900/40', 'text-accent', 'border-blue-800/50');
+
+            // Toggle items
+            const items = document.querySelectorAll('.portfolio-item');
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Video Modal triggers
+        const videoModal = document.getElementById('video-modal');
+        const modalIframe = document.getElementById('modal-iframe');
+        const modalTitle = document.getElementById('modal-video-title');
+
+        function openVideoModal(embedUrl, title) {
+            modalTitle.textContent = title;
+            modalIframe.src = embedUrl;
+            videoModal.classList.remove('hidden');
+        }
+
+        function closeVideoModal() {
+            videoModal.classList.add('hidden');
+            modalIframe.src = ''; // stop playing
+        }
+
+        // Event: Click outside modal container to close
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                closeVideoModal();
+            }
+        });
+
+        // Selecting preset packages auto fills the form
+        function selectPackage(packageName) {
+            const selectEl = document.getElementById('form-package');
+            selectEl.value = packageName;
+            // Scroll dynamically
+            document.getElementById('kontak').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Form Submission Simulation (Zero Alerts!)
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('form-name').value;
+            const selectedPkg = document.getElementById('form-package').value;
+            const brief = document.getElementById('form-brief').value;
+
+            // Configure Toast notification message
+            const toast = document.getElementById('toast-notif');
+            const toastMessage = document.getElementById('toast-message');
+            
+            toastMessage.textContent = `Terima kasih ${name}, tim kami akan memproses penawaran paket "${selectedPkg}" segera!`;
+            toast.classList.remove('hidden');
+
+            // Close Toast automatically
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 5000);
+
+            // Reset form
+            document.getElementById('booking-form').reset();
+        }
+    </script>
+</body>
+</html>
